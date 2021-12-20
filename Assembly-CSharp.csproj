@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{3C07EA24-1A62-5402-819A-045AC5CFA759}</ProjectGuid>
+    <ProjectGuid>{D0918F79-3258-6811-B98E-3CF9A1AF56C3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -47,7 +47,6 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>4.11.3.0</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2019.2.13f1</UnityVersion>
@@ -64,35 +63,67 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\newScripts\Client.cs" />
+    <Compile Include="Assets\Scripts\newScripts\ContainerType.cs" />
+    <Compile Include="Assets\Scripts\newScripts\FSM.cs" />
+    <Compile Include="Assets\Scripts\newScripts\FSMLoaderBase.cs" />
+    <Compile Include="Assets\Scripts\newScripts\ISendable.cs" />
+    <Compile Include="Assets\Scripts\newScripts\Medicament.cs" />
+    <Compile Include="Assets\Scripts\newScripts\NetworkContainer.cs" />
+    <Compile Include="Assets\Scripts\newScripts\NetworkController.cs" />
+    <Compile Include="Assets\Scripts\newScripts\PatientInputController.cs" />
+    <Compile Include="Assets\Scripts\newScripts\PatientOutputController.cs" />
+    <Compile Include="Assets\Scripts\newScripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\newScripts\PlayerInputHandler.cs" />
+    <Compile Include="Assets\Scripts\newScripts\ServerNetworkController.cs" />
+    <Compile Include="Assets\Scripts\newScripts\teach\ChatLog.cs" />
+    <Compile Include="Assets\Scripts\newScripts\teach\ChatMessage.cs" />
+    <Compile Include="Assets\Scripts\newScripts\teach\ChatType.cs" />
+    <Compile Include="Assets\Scripts\newScripts\teach\TextMessage.cs" />
+    <Compile Include="Assets\Scripts\newScripts\teach\VoiceMessage.cs" />
+    <Compile Include="Assets\Scripts\newScripts\test\BinaryTest.cs" />
+    <Compile Include="Assets\Scripts\newScripts\test\FSMBuilder.cs" />
+    <Compile Include="Assets\Scripts\newScripts\test\ITest.cs" />
+    <Compile Include="Assets\Scripts\newScripts\test\TestController.cs" />
+    <Compile Include="Assets\Scripts\newScripts\test\TestInitData.cs" />
+    <Compile Include="Assets\Scripts\newScripts\test\TestLoaderBase.cs" />
+    <Compile Include="Assets\Scripts\newScripts\test\TestLog.cs" />
+    <Compile Include="Assets\Scripts\newScripts\test\TestLogger.cs" />
+    <Compile Include="Assets\Scripts\newScripts\test\TestResult.cs" />
+    <Compile Include="Assets\Scripts\newScripts\WorldController.cs" />
+    <Compile Include="Assets\Scripts\newScripts\WorldInitData.cs" />
+    <Compile Include="Assets\Scripts\newScripts\WorldLoader.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerHeadController.cs" />
+    <Compile Include="Assets\Scripts\WorldController.cs" />
     <Compile Include="Assets\Swap_mat.cs" />
+    <None Include="Assets\Scripts\newScripts\ClassDiagram1.cd" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/AlexRenk/Desktop/диплом/firstaidproj-master/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/mydev/dwdemo/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/AlexRenk/Desktop/диплом/firstaidproj-master/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/mydev/dwdemo/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/AlexRenk/Desktop/диплом/firstaidproj-master/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/mydev/dwdemo/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/AlexRenk/Desktop/диплом/firstaidproj-master/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/mydev/dwdemo/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/AlexRenk/Desktop/диплом/firstaidproj-master/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/mydev/dwdemo/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/AlexRenk/Desktop/диплом/firstaidproj-master/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/mydev/dwdemo/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/AlexRenk/Desktop/диплом/firstaidproj-master/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/mydev/dwdemo/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/AlexRenk/Desktop/диплом/firstaidproj-master/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/mydev/dwdemo/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/AlexRenk/Desktop/диплом/firstaidproj-master/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/mydev/dwdemo/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

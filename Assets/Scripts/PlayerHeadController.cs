@@ -1,11 +1,20 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.newScripts;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHeadController : MonoBehaviour
 {
     public float click_delay = 1;
     float current_delay = 0;
+    public List<string> tools=new List<string>();
+    int currentTool = 0;
+    public Text text;
 
     Transform headTransform;
     PlayerController playerController;
@@ -15,6 +24,43 @@ public class PlayerHeadController : MonoBehaviour
     {
         headTransform = GetComponent<Transform>();
         playerController = gameObject.GetComponentInParent<PlayerController>();
+    }
+
+    public string ConnectToServer(string msg)
+    {
+        try
+        {
+            int port = 8081;
+            string address = "127.0.0.1";
+            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
+
+            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            // подключаемся к удаленному хосту
+            socket.Connect(ipPoint);
+            byte[] data = Encoding.Unicode.GetBytes(msg);
+            socket.Send(data);
+
+            // получаем ответ
+            data = new byte[256]; // буфер для ответа
+            StringBuilder builder = new StringBuilder();
+            int bytes = 0; // количество полученных байт
+
+            do
+            {
+                bytes = socket.Receive(data, data.Length, 0);
+                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+            }
+            while (socket.Available > 0);
+
+            // закрываем сокет
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Close();
+            return builder.ToString();
+        }
+        catch (Exception ex)
+        {
+            return "";
+        }
     }
 
     // Update is called once per frame
@@ -29,21 +75,17 @@ public class PlayerHeadController : MonoBehaviour
         if(current_delay < Time.deltaTime) { current_delay = 0; }
         else { current_delay -= Time.deltaTime; }
 
-        if(((Input.GetAxis("Fire1")!=0) || (Input.GetAxis("Fire2") != 0)) && current_delay == 0)
+        if(((Input.GetAxis("Fire1")!=0)) && current_delay == 0)
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, Mathf.Infinity, layermask))
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.yellow);
                 Debug.Log("Did Hit: "+ hit.transform.name);
-                Swap_mat click = hit.transform.gameObject.GetComponent<Swap_mat>();
+                PatientInputController click = hit.transform.gameObject.GetComponent<PatientInputController>();
                 if (Input.GetAxis("Fire1") != 0)
                 {
-                    click.DoAction(Swap_mat.Actions.LEFT);
-                }
-                else
-                {
-                    click.DoAction(Swap_mat.Actions.RIGHT);
+                    click.Activate(hit.distance,tools[currentTool]);
                 }
                 current_delay = click_delay;
             }
@@ -53,5 +95,14 @@ public class PlayerHeadController : MonoBehaviour
                 Debug.Log("Did not Hit");
             }
         }
+        if (Input.mouseScrollDelta.y > 0)
+        {
+            currentTool = (currentTool + 1) % tools.Count;
+        }
+        else if (Input.mouseScrollDelta.y < 0)
+        {
+            currentTool = (currentTool+tools.Count - 1) % tools.Count;
+        }
+        text.text = tools[currentTool];
     }
 }
